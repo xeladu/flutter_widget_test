@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_widget_test/list_widget.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,13 +31,16 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final List<int> _itemData = <int>[9, 2, 4];
-  int _itemCounter = 3;
 
   void _addNewData() {
     _itemData.add(Random().nextInt(10));
-    setState(() {
-      _itemCounter++;
-    });
+    setState(() {});
+
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        duration: const Duration(seconds: 1),
+        content: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [Text("item ${_itemData.length} added")])));
   }
 
   @override
@@ -53,7 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
               children: <Widget>[
                 Center(
                   child: Text(
-                    'You have this many data items: $_itemCounter',
+                    'You have this many data items: ${_itemData.length}',
                     style: const TextStyle(
                         fontSize: 18, fontWeight: FontWeight.bold),
                   ),
@@ -62,16 +66,35 @@ class _MyHomePageState extends State<MyHomePage> {
                 Expanded(
                   child: ListView.separated(
                     separatorBuilder: (context, index) => const Divider(),
-                    itemCount: _itemCounter,
+                    itemCount: _itemData.length,
                     itemBuilder: (context, index) {
-                      return Container(
-                          padding: const EdgeInsets.all(10),
-                          color: Colors.blue.shade100,
-                          child: Center(
-                              child: Text(
-                                  "Item no ${index + 1}, value: ${_itemData[index]}",
-                                  style: const TextStyle(
-                                      color: Colors.blueGrey))));
+                      return ListTile(
+                          onTap: () {
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                duration: const Duration(seconds: 1),
+                                content: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text("item ${index + 1} pressed")
+                                    ])));
+                          },
+                          onLongPress: () {
+                            setState(() {
+                              _itemData.removeAt(index);
+                            });
+
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                duration: const Duration(seconds: 1),
+                                content: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text("item ${index + 1} deleted")
+                                    ])));
+                          },
+                          title: ListWidget(
+                              key: Key("ListWidget$index"),
+                              index: index,
+                              value: _itemData[index]));
                     },
                   ),
                 )
