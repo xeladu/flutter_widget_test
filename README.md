@@ -1,16 +1,15 @@
-# flutter_widget_test
+This repo contains files that are part of the post at [How to do Widget testing in a Flutter application](https://xeladu.medium.com/).
 
-A new Flutter project.
+# Content
 
-## Getting Started
+The repository contains a working Flutter app with some simple test cases to show how widget testing works.
 
-This project is a starting point for a Flutter application.
+If you want to learn more about testing with Flutter apps, check out [my article series on Medium](https://xeladu.medium.com/list/test-your-flutter-app-aabad9825b7f).
 
-A few resources to get you started if this is your first Flutter project:
+# Support
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+If you like this post or my work in general, feel free to support me in any way ❤
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- You can [buy me a coffee](https://www.buymeacoffee.com/xeladu) ☕
+- You can [donate via PayPal](https://www.paypal.com/donate/?hosted_button_id=JPWK39GGPAAFQ) 🎁
+- You can [engage in the discussion](https://xeladu.medium.com) 📣
